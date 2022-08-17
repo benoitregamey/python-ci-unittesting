@@ -1,7 +1,10 @@
+import os
 import unittest
 from unittest.mock import patch
 import manage_ressource
 
+GEOCAT_USERNAME = os.environ["GEOCAT_USERNAME"]
+GEOCAT_PASSWORD = os.environ["GEOCAT_PASSWORD"]
 
 class TestObject(unittest.TestCase):
 
@@ -9,8 +12,8 @@ class TestObject(unittest.TestCase):
     @patch("getpass.getpass")
     def setUp(self, password, username):
 
-        username.return_value = "reo"
-        password.return_value = "sU6972.."
+        username.return_value = GEOCAT_USERNAME
+        password.return_value = GEOCAT_PASSWORD
 
         self.ogc = manage_ressource.ManageOGCResource()
 
