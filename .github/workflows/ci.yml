@@ -26,4 +26,4 @@ jobs:
         env:
           GEOCAT_USERNAME: ${{secrets.GEOCAT_USERNAME}}
           GEOCAT_PASSWORD: ${{secrets.GEOCAT_PASSWORD}}
-        run: -m unittest discover
+        run: python -m unittest discover
