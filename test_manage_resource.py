@@ -1,4 +1,3 @@
-from genericpath import isfile
 import os
 import unittest
 from unittest.mock import patch
