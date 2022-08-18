@@ -1,16 +1,24 @@
+from genericpath import isfile
 import os
 import unittest
 from unittest.mock import patch
 import manage_ressource
+from dotenv import load_dotenv
+
+# If in dev environment, get env variables from .env file
+if os.path.isfile(os.path.join(os.path.dirname(__file__), '.env')):
+    env_path = os.path.join(os.path.dirname(__file__), '.env')
+    load_dotenv(dotenv_path=env_path)
 
 GEOCAT_USERNAME = os.environ["GEOCAT_USERNAME"]
 GEOCAT_PASSWORD = os.environ["GEOCAT_PASSWORD"]
 
 class TestObject(unittest.TestCase):
 
+    @classmethod
     @patch("builtins.input")
     @patch("getpass.getpass")
-    def setUp(self, password, username):
+    def setUpClass(self, password, username):
 
         username.return_value = GEOCAT_USERNAME
         password.return_value = GEOCAT_PASSWORD
